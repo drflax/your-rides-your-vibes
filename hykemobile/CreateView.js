@@ -123,27 +123,6 @@ class CreateView extends Component {
     );
   }
 
-  _postData = (data) => {
-    fetch(`http://52.90.113.54/hike`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: data
-    })
-    .then((response) => response.json())
-    .then((hike) => {
-      alert(`${hike.name} was added!`);
-      this.props.navigator.pop();
-    })
-    .catch((error) => {
-      console.log(error);
-      alert('There was an error adding your hike.');
-    })
-    .done();
-    }
-
   _handleAdd = () => {
     var value = this.refs.form.getValue();
     // If the form is valid...
@@ -178,7 +157,7 @@ class CreateView extends Component {
       data.features = data.features.filter((val) => val !== null);
       // Serialize and post the data
       var data = JSON.stringify(data);
-      fetch(`http://52.90.113.54/hike`, {
+      fetch(`http://52.90.113.54/hikes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -193,6 +172,7 @@ class CreateView extends Component {
         this.props.navigator.pop();
       })
       .catch((error) => {
+        console.log(error);
         alert('There was an error adding your hike.');
       })
       .done();

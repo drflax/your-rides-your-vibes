@@ -38,13 +38,14 @@ class GeoView extends Component {
   }
 
   _fetchData = (position) => {
-    fetch(`http://localhost:3000/hikes/geo/?lng=${position.coords.longitude}&lat=${position.coords.latitude}`, {
+    fetch(`http://52.90.113.54/hikes/geo/?lng=${position.coords.longitude}&lat=${position.coords.latitude}`, {
       headers: {
         'Accept': 'application/json',
       },
     })
     .then((response) => response.json())
     .then((hikes) => {
+      console.log(hikes)
       this.setState({
         hikes: this.state.hikes.cloneWithRows(hikes),
         showIndicator: false

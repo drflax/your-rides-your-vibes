@@ -74,7 +74,7 @@ class CreateView extends Component {
 
   _handleDelete = () => {
     AsyncStorage.getItem('jwt', (err, token) => {
-      fetch(`http://localhost:3000/reviews/${this.props.review._id}`, {
+      fetch(`http://52.90.113.54/reviews/${this.props.review._id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -115,8 +115,8 @@ class CreateView extends Component {
       const method = this.props.edit ? 'PUT' : 'POST'
       const url = (
         this.props.edit
-        ? `http://localhost:3000/reviews/${this.props.review._id}`
-        : 'http://localhost:3000/reviews'
+        ? `http://52.90.113.54/reviews/${this.props.review._id}`
+        : 'http://52.90.113.54/reviews'
       )
       AsyncStorage.getItem('jwt', (err, token) => {
         fetch(url, {
@@ -145,7 +145,7 @@ class CreateView extends Component {
 
   _fetchReview = () => {
     AsyncStorage.getItem('jwt', (err, token) => {
-      fetch(`http://localhost:3000/reviews/${this.props.review._id}`, {
+      fetch(`http://52.90.113.54/reviews/${this.props.review._id}`, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `JWT ${token}`

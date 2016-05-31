@@ -22,9 +22,8 @@ class HomeView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      authenticated: true
+      authenticated: false
     }
-    AsyncStorage.setItem('jwt', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3NDFjOGZiMmYxNzFhZWQ0YjkxZTU1YSIsImVtYWlsIjoibWVAdGVzdGluZy5jb20iLCJpYXQiOjE0NjM5MzAyNzl9.l6D4sVzYbXk19LB8zp7yBv9zw6cT_bIkDtm8yaUs2wo')
   }
   _setAuthStatus = (authenticated) => {
     this.setState({ authenticated })

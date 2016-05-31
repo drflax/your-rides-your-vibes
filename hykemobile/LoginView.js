@@ -67,7 +67,7 @@ class LoginView extends Component {
       }
       // Serialize and post the data
       const json = JSON.stringify(data)
-      fetch('http://localhost:3000/users/login', {
+      fetch('http://52.90.113.54/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

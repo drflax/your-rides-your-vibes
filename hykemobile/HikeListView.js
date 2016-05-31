@@ -42,7 +42,7 @@ class HikeListView extends Component {
 
   _fetchData = () => {
     AsyncStorage.getItem('jwt', (err, token) => {
-      fetch('http://localhost:3000/hikes/all', {
+      fetch('http://52.90.113.54/hikes/all', {
         headers: {
           Accept: 'application/json',
           Authorization: `JWT ${token}`

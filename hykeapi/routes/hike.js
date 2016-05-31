@@ -14,6 +14,25 @@ app.get('/all', function (req, res) {
   })
 });
 
+// Geospatial lookup
+app.get('/geo/', function (req, res, next) {
+  var limit = req.query.limit || 10;
+  var maxDistance = req.query.distance || 10;
+  maxDistance /= 6371;
+  var coords = [req.query.lng, req.query.lat];
+  Hike.find({
+    'location.loc': {
+      $nearSphere: coords,
+      $maxDistance: maxDistance
+    }
+  }).limit(limit).exec(function (err, locations) {
+    if (err) {
+      return res.send(err);
+    }
+    return res.status(200).send(locations);
+  })
+})
+
 // Get single hike by ID
 app.get('/:id', function (req, res) {
   Hike.findOne({
@@ -91,23 +110,5 @@ app.put('/:id', function (req, res) {
     })
 });
 
-// Geospatial lookup
-app.get('/geo/', function (req, res, next) {
-  var limit = req.query.limit || 10;
-  var maxDistance = req.query.distance || 10;
-  maxDistance /= 6371;
-  var coords = [req.query.lng, req.query.lat];
-  Hike.find({
-    'location.loc': {
-      $nearSphere: coords,
-      $maxDistance: maxDistance
-    }
-  }).limit(limit).exec(function (err, locations) {
-    if (err) {
-      return res.send(err);
-    }
-    return res.status(200).send(locations);
-  })
-})
 
 module.exports = app;

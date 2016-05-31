@@ -41,7 +41,7 @@ class UserReviews extends Component {
 
   _fetchData = () => {
     AsyncStorage.getItem('jwt', (err, token) => {
-      fetch('http://localhost:3000/reviews/me', {
+      fetch('http://52.90.113.54/reviews/me', {
         headers: {
           Accept: 'application/json',
           Authorization: `JWT ${token}`
