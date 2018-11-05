@@ -18,7 +18,7 @@ var reviews = require('./routes/review');
 var db = process.env.MONGO_URL || 'mongodb://DrFlax:sambucetti1@ds024548.mlab.com:24548/yryv'
 mongoose.connect(db);
 mongoose.connection.on('error', function () {
-  console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?')
+  console.warn('Error: Could not connect to MongoDB. Did you forget to run `mongod`?')
 });
 
 // JWT configuration
