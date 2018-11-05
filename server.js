@@ -30,7 +30,7 @@ app.use(passport.initialize());
 
 // server configuration
 app.use(require('body-parser')());
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 24548);
 
 // Route/URL configuration
 app.use('/hikes', hikes);
