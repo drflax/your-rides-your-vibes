@@ -74,7 +74,7 @@ app.use(function (err, req, res, next) {
 app.use(function (req, res, next) {
   res.type('text/plain');
   res.status(404);
-  res.send('404 Not Found');
+  res.send('404 Not pollas');
 });
 
 
